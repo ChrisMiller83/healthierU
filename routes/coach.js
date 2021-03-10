@@ -3,6 +3,9 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require('bcrypt')
 
+router.get('/coaches', (req, res) => {
+  //populate all coaches
+})
 
 router.get("/register", (req, res) => {
   res.render("coach-signup", {

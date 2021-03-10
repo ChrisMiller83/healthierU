@@ -1,0 +1,61 @@
+.login_container {
+  padding-top: 25%;
+  padding-left: 25%;
+  display: inline-flex;
+  width: 100%;
+  padding-right: 25%;
+}
+
+.login_section {  
+  margin: 10%;  
+}
+
+.client_button {
+  background-color: blue;
+  font-size: 24px;
+  color: white;
+}
+.client_button:hover {
+  opacity: 0.7;
+}
+
+.coach_button {
+  background-color: blue;
+  font-size: 24px;
+  color: white;
+}
+
+.coach_button:hover {
+  opacity: 0.7;
+}
+
+.register_link {
+  font-size: 15px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the input container */
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 30px;
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .login_container {
+    flex-direction: column;
+  }
+}

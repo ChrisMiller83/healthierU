@@ -16,3 +16,20 @@ could copy and paste workout text from database into workout field and then assi
 on cilck "assign" take field text and put it in as client "workout" text
 
 want clients id attached to workout 
+
+workout table {
+  name
+  type of workout
+  add coachid 
+
+  static associrate*models) {
+    Workout.belongsTo(models.Client) - what is it getting assigned to
+    Workout.hasMany(models.Point) - assigning pionts if we choose to do so)
+  }
+}
+
+parent table {
+  statis associate(models) {
+    
+  }
+}

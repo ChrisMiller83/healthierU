@@ -1,11 +1,27 @@
 {
   "name": "healthieru",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kndllransom/healthierU.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kndllransom/healthierU/issues"
+  },
+  "homepage": "https://github.com/kndllransom/healthierU#readme",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
 }

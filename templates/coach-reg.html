@@ -1,49 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coach Registration</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Registration</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
 <body>
-  <h1>Coach Registration</h1>
-    <form method="POST" action="/users/rgeister">
-      <div id="">
-      <h2>Sign up</h2>
-      <p>
-        <label for="first-name">First Name</label><br>
-        <input type="text" name="first-name" id="first-name" placeholder="Jay" required />
-      </p>
-      <p>
-        <label for="last-name">Last Name</label><br>
-        <input type="text" name="last-name" id="last-name" placeholder="Robinson" required />
-      </p>
-      <p>
-        <label for="nickname" >Nickname</label><br>
-        <input type="text" name="nickname" id="nickname" placeholder="Coach Jay, etc." required />
-      </p>
-      <p>
-      <label for="specialty">What's your specialty?:</label>
-      <br>
 
-      <select name="specialty" id="specialty">
-        <option value="lifting">Power Lifting</option>
-        <option value="physique">Physique</option>
-        <option value="cardio">Conditioning/Cardio</option>
+  <form action="index.html" method="post">
+  
+    <h1>Coach Registration</h1>
+    
+    <fieldset>
+      <legend><span class="number">1</span>Your basic info</legend>
+      <label for="first-name">First Name:</label>
+      <input type="text" id="name" name="user_name" placeholder="Jay">
+      
+      <label for="last-name">Last Name:</label>
+      <input type="text" id="name" name="user_name" placeholder="Robinson">
+      
+      <label for="nickname">Nick Name:</label>
+      <input type="text" id="nickname" name="user_name" placeholder="Coach Jay">
+
+      
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="user_email" placeholder="jay-rob@email.com">
+      
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="user_password" placeholder="password">
+      
+      <label>Gender:</label>
+      <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Male</label><br>
+      <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">Female</label>
+    </fieldset>
+    
+    <fieldset>
+      <legend><span class="number">2</span>Your profile</legend>
+      <label for="bio">Experience:</label>
+      <textarea id="bio" name="user_bio"></textarea>
+    </fieldset>
+    <fieldset>
+    <label for="expertice">Expertice:</label>
+    <select id="expertice" name="user_job">
+      <optgroup label="Strength">
+        <option value="power_lifting">Power Lifting</option>
+        <option value="body_building">Body Building</option>
+        
+      </optgroup>
+      <optgroup label="Team Sports">
+        <option value="basketball">Basketball</option>
+        <option value="football">Football</option>
+        <option value="track">Track & Field</option>
+      </optgroup>
+      <optgroup label="Conditioning/Cardio">
         <option value="crossfit">Crossfit</option>
-      </select>
-      </p>
-      <p>
-        <label for="email">Email</label><br>
-        <input type="text" name="email" id="email"  placeholder="jay-rob@email.com" required />
-      </p>
-      <p>
-        <label for="password">Password</label><br>
-        <input type="password" name="password" id="password" placeholder="password" required />
-      </p>
-      <button type="Register">Register</button>
-    </form>
-      </div>
+        <option value="agility">Agility</option>
+      </optgroup>
+      
+    </select>
+    
+      <!-- <label>Interests:</label>
+      <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
+        <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
+      <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label> -->
+    
+    </fieldset>
+    <button type="submit">Register</button>
+  </form>
+  
 </body>
 </html>

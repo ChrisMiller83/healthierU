@@ -7,7 +7,9 @@
 }
 
 .login_section {  
-  margin: 10%;  
+  margin: 10%;
+  border: 5px solid lightgray;
+  padding: 10px;  
 }
 
 .client_button {

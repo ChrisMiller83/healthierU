@@ -1,0 +1,8 @@
+clients are giong to belong to one coach
+coach can have many clients
+clients are going to have coach id
+workouts and meals are also giong to have coach id
+workouts and nutrition have to be linked to coach and client and best way to do it is through coach id
+
+workouts table needs client id and coach id
+

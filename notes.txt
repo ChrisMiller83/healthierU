@@ -6,3 +6,13 @@ workouts and nutrition have to be linked to coach and client and best way to do 
 
 workouts table needs client id and coach id
 
+coach makes workouts in database
+how does coach assign workouts to client? 
+
+make seperate client view page for coach and allow them to assign workouts to them?
+render workouts (based on category) and let coach pick or just type from scratch
+
+could copy and paste workout text from database into workout field and then assign it to client from there
+on cilck "assign" take field text and put it in as client "workout" text
+
+want clients id attached to workout 

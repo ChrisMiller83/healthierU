@@ -16,7 +16,7 @@
   <p class="body_text">healthierU is a website designed to help you live a healthier life. Sign in below or register to begin living a healthierU.  </p>
   <div class="login_container">
     <div class="login_section">
-      <form method="POST" action="/coaches/login">
+      <form method="POST" action="/coach/login">
         <legend>Coach Login</legend>
         <label for="email">Email</label>
         <br>
@@ -29,7 +29,7 @@
         <br>
         <div class="input-container">
           <i class="fa fa-key icon" aria-hidden="true"></i>
-          <input type="password" name="password" id="password" placeholder="Enter you password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" style="width: 90%;"title="Must contain at least one  number and one uppercase and lowercase letter, and be between 6 and 16 characters" required>
+          <input type="password" name="password" id="password" placeholder="Enter you password" style="width: 90%;"title="Must contain at least one  number and one uppercase and lowercase letter, and be between 6 and 16 characters" required>
         </div>
         <p></p>
         <a href="./coach_login.html"><button type="submit" class="coach_button" style="width: 99%;">Coach Login</button></a>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="login_section">
-      <form method="POST" action="/clients/login">
+      <form method="POST" action="/client/login">
         <legend>Athlete Login</legend>
         <label for="email">Email</label>
         <br>
@@ -52,7 +52,7 @@
         <br>
         <div class="input-container">
           <i class="fa fa-key icon"></i>
-          <input type="password" name="password" id="password" autocomplete="current-password" placeholder="Enter you password" minlength="6" maxlength="16" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" title="Must contain at least one  number and one uppercase and lowercase letter, and be between 6 and 16 characters" style="width: 90%;"required>
+          <input type="password" name="password" id="password" autocomplete="current-password" placeholder="Enter you password" minlength="6" maxlength="16"  title="Must contain at least one  number and one uppercase and lowercase letter, and be between 6 and 16 characters" style="width: 90%;"required>
         </div>
         <p></p>
         <a href="./athlete_login.html"><button type="submit" class="client_button" style="width: 99%;">Athlete Login</button></a>
@@ -64,3 +64,7 @@
 </body>
 
 </html>
+
+<!-- passsword pattern pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}"  -->
+
+<!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,16}" -->

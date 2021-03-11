@@ -107,7 +107,7 @@ a:hover {
 }
 
 body {
-  background-image: url("../public/images/login_bg.jpg");
+  background-image: url("/images/login_bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -6,7 +6,7 @@ const es6Renderer = require('express-es6-template-engine');
 const db = require('./models');
 
 var indexRouter = require('./routes/index');
-var clientRouter = require('./routes/client');
+var athleteRouter = require('./routes/athlete');
 const coachRouter = require('./routes/coach')
 
 var app = express();
@@ -21,7 +21,7 @@ app.set("views", "templates");
 app.set("view engine", "html");
 
 app.use('/', indexRouter);
-app.use('/client', clientRouter);
+app.use('/athlete', athleteRouter);
 app.use('/coach', coachRouter)
 
 module.exports = app;

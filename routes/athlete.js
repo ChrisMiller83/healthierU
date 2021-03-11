@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 
 
 router.get("/register", (req, res) => {
-  res.render("client-signup", {
+  res.render("athlete-reg", {
     locals: { 
       error: null,
     }
@@ -37,6 +37,13 @@ router.post('/register', async (req, res) => {
   })
 
   res.json(newclient);
+})
+
+router.get('/home', (req, res) => {
+  res.render('athlete_home', {
+    locals: { title: "Athlete Home" },
+    partials: {head: 'partials/head'}
+  })
 })
 
 router.get('/login', (req, res) => {

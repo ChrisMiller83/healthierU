@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
 
   // res.json(newclient);
   .then((result) => {
-    res.redirect('/client/login')
+    res.redirect('/athlete/login')
   })
   
 })

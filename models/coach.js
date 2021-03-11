@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Coach.hasMany(models.Client);
+      Coach.hasMany(models.Workout);
     }
   };
   Coach.init({

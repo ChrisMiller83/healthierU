@@ -110,4 +110,9 @@ router.post('/workouts', (req, res) => {
   
 })
 
+router.get('/logout', (req, res) => {
+  req.session.user = null;
+  res.redirect('/login');
+})
+
 module.exports = router;

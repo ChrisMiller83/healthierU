@@ -12,6 +12,7 @@ module.exports = {
     {
       type: 'Arms',
       work: '10 push-ups',
+      ClientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     }

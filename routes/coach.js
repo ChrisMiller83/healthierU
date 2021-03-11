@@ -3,6 +3,13 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require('bcrypt')
 
+router.get('/home', (req, res) => {
+  res.render('coach_home', {
+    locals: { title: "Coaches Home" },
+    partials: { head: 'partials/head' }
+  })
+})
+
 router.get('/coaches', (req, res) => {
   //populate all coaches
 })

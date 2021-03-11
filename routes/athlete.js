@@ -43,6 +43,13 @@ router.post('/register', async (req, res) => {
   
 })
 
+router.get('/home', (req, res) => {
+  res.render('athlete_home', {
+    locals: { title: "Athlete Home" },
+    partials: {head: 'partials/head'}
+  })
+})
+
 router.get('/login', (req, res) => {
   res.render('login', {
     locals: { error: null }

@@ -1,39 +1,87 @@
+h1 {
+  padding-top: 5%;
+  text-align: center;
+  font-size: 100px;
+  color: gold;
+  font-style: italic;
+  font-family: fantasy;
+}
+
 .login_container {
-  padding-top: 25%;
-  padding-left: 25%;
-  display: inline-flex;
-  width: 100%;
-  padding-right: 25%;
+  padding-top: 10%;
+  padding-inline-start: 15%;
+  display: inline-flex;  
+  position: relative;
+}
+
+legend {
+  text-align: center;
+  color:gold;
+  font-size: 30px;
+  font-style: italic;
+  font-family: fantasy;
+}
+label {
+  color: gold;
+  font-size: large;
+  font-style: italic;
+  font-family: fantasy;
 }
 
 .login_section {  
   margin: 10%;
-  border: 5px solid lightgray;
-  padding: 10px;  
+  border: 5px solid gray;
+  padding: 10px;
+  /* opacity: 0.9; */
+  min-width: 300px;
+  min-height: 325px;  
 }
 
 .client_button {
-  background-color: blue;
+  background-color: gold;
   font-size: 24px;
   color: white;
+  border: 5px solid gold;
+  text-align: center;
+  align-self: center;
+  font-style: italic;
+  font-family: fantasy;
+  border-radius: 5px;
+  opacity: 0.9;
 }
+
 .client_button:hover {
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .coach_button {
-  background-color: blue;
+  background-color: gold;
   font-size: 24px;
   color: white;
+  border: 5px solid gold;
+  text-align: center;
+  font-style: italic;
+  font-family: fantasy;
+  border-radius: 5px;
+  opacity: 0.9;
 }
 
 .coach_button:hover {
-  opacity: 0.7;
+  opacity: 0.9;
+  background-color: silver;
 }
 
-.register_link {
-  font-size: 15px;
+a {
+  font-size: 15px;  
+  color: gold;
+  font-style: italic;
+  font-family: fantasy;
 }
+
+a:hover {
+  color: slategray;
+}
+
 
 * {
   box-sizing: border-box;
@@ -41,21 +89,33 @@
 
 /* Style the input container */
 .input-container {
-  display: flex;
-  width: 100%;
+  display: flex;  
   margin-bottom: 15px;
+  border: 2px solid gray;
+  background-color: white;
+  opacity: 0.9;
 }
 
 /* Style the form icons */
 .icon {
   padding: 10px;
-  background: dodgerblue;
+  background: gold;
   color: white;
-  min-width: 30px;
+  width: 15%;
   text-align: center;
+  
 }
 
+body {
+  background-image: url("../public/images/login_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.body_text {
+  text-align: center;
+  color: gold;
 
+}
 @media only screen and (max-width: 1024px) {
   .login_container {
     flex-direction: column;

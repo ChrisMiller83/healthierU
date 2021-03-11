@@ -22,6 +22,7 @@ router.get("/register", (req, res) => {
   })
 });
 
+//localhost:3000/coach/register
 router.post('/register', async (req, res) => {
   const coaches = await db.Coach.findAll({
     where: {
@@ -46,18 +47,21 @@ router.post('/register', async (req, res) => {
     password: hash
   })
 
-  res.json(newCoach);
+  // res.json(newCoach);
+  .then((result) => {
+    res.redirect('/coach/login')
+  })
 })
 
 router.get('/login', (req, res) => {
-  res.render('coach-signin', {
+  res.render('login', {
     locals: { error: null }
   })
 })
 
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('coach-login', {
+    res.render('login', {
       locals: {
           error: 'Please submit all required field'
       }
@@ -79,9 +83,15 @@ router.post('/login', async (req, res) => {
   //compare user input and password
   const match = await bcrypt.compare(req.body.password, coach.password)
   //throw error if wrong
-  if (!match) {
-    return res.status(401).render('error', {
-      locals: { error: 'incorrect password'}
+
+  if (match) {
+    req.session.coach = coach;
+  } else {
+    // return res.status(401).render('error', {
+    //   locals: { error: 'incorrect password'}
+    // })
+    res.json({
+      error: 'nope'
     })
   }
   //set user data on session

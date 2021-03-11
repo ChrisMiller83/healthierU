@@ -36,7 +36,11 @@ router.post('/register', async (req, res) => {
     password: hash
   })
 
-  res.json(newclient);
+  // res.json(newclient);
+  .then((result) => {
+    res.redirect('/client/login')
+  })
+  
 })
 
 router.get('/home', (req, res) => {
@@ -47,14 +51,14 @@ router.get('/home', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('client-signin', {
+  res.render('login', {
     locals: { error: null }
   })
 })
 
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('client-login', {
+    res.render('login', {
       locals: {
           error: 'Please submit all required field'
       }
@@ -74,11 +78,16 @@ router.post('/login', async (req, res) => {
   }
 
   //compare client input and password
-  const match = await bcrypt.compare(req.body.password, coach.password)
+  const match = await bcrypt.compare(req.body.password, client.password)
   //throw error if wrong
-  if (!match) {
-    return res.status(401).render('error', {
-      locals: { error: 'incorrect password'}
+  if (match) {
+    req.session.client = client;
+  } else {
+    // return res.status(401).render('error', {
+    //   locals: { error: 'incorrect password'}
+    // })
+    res.json({
+      error: 'nope'
     })
   }
   //set client data on session

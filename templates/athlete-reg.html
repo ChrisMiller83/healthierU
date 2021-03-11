@@ -10,27 +10,26 @@
   </head>
 <body>
 
-  <form action="index.html" method="post">
+  <form action="/client/register" method="POST">
   
     <h1>Athlete Registration</h1>
     
     <fieldset>
       <legend><span class="number">1</span>Your basic info</legend>
       <label for="first-name">First Name:</label>
-      <input type="text" id="name" name="user_name" placeholder="Jay">
+      <input type="text" id="firstName" name="firstName" placeholder="Jay">
       
       <label for="last-name">Last Name:</label>
-      <input type="text" id="name" name="user_name" placeholder="Robinson">
+      <input type="text" id="lastName" name="lastName" placeholder="Robinson">
       
-      <label for="nickname">Nick Name:</label>
-      <input type="text" id="nickname" name="user_name" placeholder="Jay">
-
+      <!-- <label for="nickname">Nick Name:</label>
+      <input type="text" id="nickname" name="user_name" placeholder="Jay"> -->
       
-      <label for="mail">Email:</label>
-      <input type="email" id="mail" name="user_email" placeholder="jay-rob@email.com">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="jay-rob@email.com">
       
       <label for="password">Password:</label>
-      <input type="password" id="password" name="user_password" placeholder="password">
+      <input type="password" id="password" name="password" placeholder="password">
       
       <label>Gender:</label>
       <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Male</label><br>

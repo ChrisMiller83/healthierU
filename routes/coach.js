@@ -4,6 +4,7 @@ const db = require("../models");
 const bcrypt = require('bcrypt');
 const checkAuth = require('../checkAuthCoach');
 
+//redners coach home page on log in
 router.get('/home', (req, res) => {
   res.render('coach_home', {
     locals: { title: "Coaches Home" },
@@ -15,6 +16,7 @@ router.get('/coaches', (req, res) => {
   //populate all coaches
 })
 
+// renders coach register page
 router.get("/register", (req, res) => {
   res.render("coach-reg", {
     locals: { 
@@ -34,13 +36,13 @@ router.post('/register', async (req, res) => {
   if (coaches.length) {
     res.status(422).json({ error: 'email already in use' })
   }
-
+// checks to make sure all fields are entered
   if (!req.body.email || !req.body.firstName || !req.body.lastName || !req.body.password) {
     return res.status(422).json({error: 'please include all required fields'})
   } 
-
+// hashes passwords
   const hash = await bcrypt.hash(req.body.password, 10);
-
+//creates new coach and assigs it to variable
   const newCoach = await db.Coach.create({
     email: req.body.email,
     firstName: req.body.firstName,
@@ -53,13 +55,13 @@ router.post('/register', async (req, res) => {
     res.redirect('/coach/login')
   })
 })
-
+//renders login page
 router.get('/login', (req, res) => {
   res.render('login', {
     locals: { error: null }
   })
 })
-
+//allows someone to log in and creates session for them
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
     res.render('login', {
@@ -69,7 +71,7 @@ router.post('/login', async (req, res) => {
   })
   return;
   }
-
+//checks to see if coach exists in db
   const coach = await db.Coach.findOne({
     where: {
       email: req.body.email
@@ -106,7 +108,7 @@ router.get('/workouts', checkAuth, async (req, res) => {
     locals: { error: null }
   })
 })
-
+//deletes workout by workoutid
 router.delete('/deleteworkout/:id', (req, res) => {
   db.Workout.destroy({
     where: {
@@ -114,7 +116,21 @@ router.delete('/deleteworkout/:id', (req, res) => {
     }
   })
 })
-
+//allows you to edit one workout 
+router.put('/editworkout/:id', (req, res) => {
+  db.Workout.findByPk(req.params.id)
+  .then((result) => {
+    result.exercise = req.body.exercise
+    result.sets = req.body.sets
+    result.reps = req.body.reps
+    result.weight = req.body.weight
+    return result.save()
+  })
+  .then((response) => {
+    res.json('working')
+  })
+})
+//allows coach to create workout and add it to db
 router.post('/addworkout', async (req, res) => {
   if (!req.body.exercise) {
     return res.status(422).json({
@@ -130,7 +146,7 @@ router.post('/addworkout', async (req, res) => {
     res.json(newWorkout)
   }
 })
-
+// allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;
   res.redirect('/login');

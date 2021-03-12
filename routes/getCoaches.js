@@ -1,18 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models");
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { response } = require('express');
 
-router.get('/', (req, res) => {
-  res.render("coaches_list", {
-    locals: {
-      error: null,
-      title: "Coaches List",      
-    },
-    partials: {
-      head: "/partials/head"
-    }
-  });
+
+
+router.get('/', async (req, res) => {
+  const data = await db.Coach.findAll();
+
+    res.render("coaches_list", {
+      locals: {
+        error: null,
+        title: "Coaches List", 
+        coaches: data
+      },
+      partials: {
+        head: "/partials/head"
+      }
+    })  
 })
 
 module.exports = router

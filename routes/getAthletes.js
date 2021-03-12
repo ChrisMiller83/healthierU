@@ -4,16 +4,15 @@ const db = require("../models");
 const bcrypt = require('bcrypt')
 
 router.get('/', (req, res) => {
-  res.render("coaches_list", {
+  res.render("athletes_list", {
     locals: {
       error: null,
-      title: "Coaches List",      
+      title: "Athletes List",
     },
     partials: {
-      head: "/partials/head"
+      head: "/partials/head_2"
     }
   });
 })
 
 module.exports = router
-

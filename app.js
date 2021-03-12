@@ -7,10 +7,11 @@ const es6Renderer = require('express-es6-template-engine');
 const db = require('./models');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const store = new SequelizeStore({ db: db.sequelize });
-
 var indexRouter = require('./routes/index');
 var athleteRouter = require('./routes/athlete');
-const coachRouter = require('./routes/coach')
+const coachRouter = require('./routes/coach');
+const getCoachesRouter = require('./routes/getCoaches');
+const getAthletesRouter = require('./routes/getAthletes');
 
 var app = express();
 
@@ -43,6 +44,8 @@ app.set("view engine", "html");
 
 app.use('/', indexRouter);
 app.use('/athlete', athleteRouter);
-app.use('/coach', coachRouter)
+app.use('/coach', coachRouter);
+app.use('/coaches_list', getCoachesRouter);
+app.use('/athletes_list', getAthletesRouter);
 
 module.exports = app;

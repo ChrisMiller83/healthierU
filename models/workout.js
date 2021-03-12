@@ -10,8 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Workout.init({
-    type: DataTypes.STRING,
-    work: DataTypes.STRING
+    exercise: DataTypes.STRING,
+    sets: DataTypes.INTEGER,
+    reps: DataTypes.INTEGER,
+    weight: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Workout',

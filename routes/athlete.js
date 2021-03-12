@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models");
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const checkAuth = require('../checkAuthClient');
 
 
 router.get("/register", (req, res) => {
@@ -44,7 +45,7 @@ router.post('/register', async (req, res) => {
 
 
 
-router.get('/home', (req, res) => {
+router.get('/home', checkAuth, (req, res) => {
   res.render('athlete_home', {
     locals: { title: "Athlete Home" },
     partials: {head: 'partials/head'}
@@ -95,13 +96,13 @@ router.post('/login', async (req, res) => {
   res.redirect(`/athlete/:${client.id}`)
 })
 
-router.get('/allworkouts', (req, res) => {
+router.get('/allworkouts', checkAuth, (req, res) => {
   db.Workout.findAll()
   .then((workout) => {
     res.json(workout)
   })
 })
-
+// displays workot based on workout id
 router.get('/:id', (req, res) => {
   const {id} = req.session.client;
   db.Workout.findOne({
@@ -113,7 +114,7 @@ router.get('/:id', (req, res) => {
 })
 
 //set workouts
-router.get('/workouts/:id', (req, res) => {
+router.get('/workouts/:id', checkAuth, (req, res) => {
   const client = req.session.client;
   db.Workout.findByPk(req.params.id)
   .then((workout) => {
@@ -130,7 +131,7 @@ router.get('/workouts/:id', (req, res) => {
   })
 })
 
-router.get('/setcoach/:id', (req, res) => {
+router.get('/setcoach/:id', checkAuth, (req, res) => {
   db.Coach.findByPk(req.params.id)
   .then((coach) => {
     if (!coach) {

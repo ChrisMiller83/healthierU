@@ -20,13 +20,19 @@
       color: white;
       background-color: black;
     }
+    table {
+      border: 1px, solid black;
+      width: 100%;
+    }
+
   </style>
 </head>
 
 <body>
-  <h2 style="background-color:gold; font-family: fantasy; font-style: italic, strong; text-align: center;">Coaches List</h2>
+  
+  <h3 style="background-color:gold; font-family: fantasy; font-style: italic, strong; text-align: center;">Coaches List</h3>
 
-  <table style="width:100%; border: 1px solid black; justify-content: space-evenly;">
+  <table>
     <tr>
       <th>Select Coach</th>
       <th>First Name</th>
@@ -34,15 +40,17 @@
       <th>Email</th>
       <th>Specialty</th>
     </tr>
-    ${coaches.map(coach => `
+    ${coaches.map(coach => 
+      `
     <tr>
-      <td><input type="radio" id="select_coach" name="select_coach" style=""></td>
+      <td><input type="radio" id="select_coach" name="select_coach"></td>
       <td>${coach.firstName}</td>
       <td>${coach.lastName}</td>
       <td>${coach.email}</td>
       <td>${coach.specialty}</td>
     </tr>
-    `)}
+    `
+  ).join('')}
 
 
   </table>

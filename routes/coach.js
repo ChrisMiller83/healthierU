@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models");
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const checkAuth = require('../checkAuthCoach');
 
 router.get('/home', (req, res) => {
   res.render('coach_home', {
@@ -99,20 +100,50 @@ router.post('/login', async (req, res) => {
 
   res.json(coach);
 })
-
-router.get('/workouts', async (req, res) => {
+//brings to page that has workouts for coach
+router.get('/workouts', checkAuth, async (req, res) => {
   res.render('coach-workouts', {
     locals: { error: null }
   })
 })
 
-router.post('/workouts', (req, res) => {
-  
+router.delete('/deleteworkout/:id', (req, res) => {
+  db.Workout.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+})
+
+router.post('/addworkout', async (req, res) => {
+  if (!req.body.exercise) {
+    return res.status(422).json({
+      error: 'please include all required fields'
+    })
+  } else {
+    const newWorkout = await db.Workout.create({
+      exercise: req.body.exercise,
+      sets: req.body.sets,
+      reps: req.body.reps,
+      weight: req.body.weight
+    })
+    res.json(newWorkout)
+  }
 })
 
 router.get('/logout', (req, res) => {
   req.session.user = null;
   res.redirect('/login');
 })
+
+// router.get('/workouts', checkAuth, (req, res) => {
+//   const {id} = req.session.client;
+//   db.Workout.findAll({
+//     where: {id}
+//   })
+//   .then((workout) => {
+//     res.json(workout)
+//   })
+// })
 
 module.exports = router;

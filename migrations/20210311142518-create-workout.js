@@ -8,11 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      type: {
+      exercise: {
+        allowNull: false,
         type: Sequelize.STRING
       },
-      work: {
-        type: Sequelize.STRING
+      sets: {
+        type: Sequelize.INTEGER
+      },
+      reps: {
+        type: Sequelize.INTEGER
+      },
+      weight: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

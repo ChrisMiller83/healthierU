@@ -4,10 +4,11 @@ const db = require("../models");
 const bcrypt = require('bcrypt');
 const checkAuth = require('../checkAuthCoach');
 
+//redners coach home page on log in
 router.get('/home', (req, res) => {
-  res.render('coach_home', {
+  res.render('coach-hub', {
     locals: { title: "Coaches Home" },
-    partials: { head: 'partials/head_2' }
+    partials: { head: '/partials/head' }
   })
 })
 
@@ -15,6 +16,7 @@ router.get('/coaches', (req, res) => {
   //populate all coaches
 })
 
+// renders coach register page
 router.get("/register", (req, res) => {
   res.render("coach-reg", {
     locals: { 
@@ -32,15 +34,19 @@ router.post('/register', async (req, res) => {
   })
 //checks to see if user exists already with email
   if (coaches.length) {
-    res.status(422).json({ error: 'email already in use' })
+    res.status(422).render('coach-reg', {
+      locals: { error: 'email already in use' }
+    })
   }
-
+// checks to make sure all fields are entered
   if (!req.body.email || !req.body.firstName || !req.body.lastName || !req.body.password) {
-    return res.status(422).json({error: 'please include all required fields'})
+    return res.status(422).render('coach-reg', {
+      locals: {error: 'please include all required fields'}
+    })
   } 
-
+// hashes passwords
   const hash = await bcrypt.hash(req.body.password, 10);
-
+//creates new coach and assigs it to variable
   const newCoach = await db.Coach.create({
     email: req.body.email,
     firstName: req.body.firstName,
@@ -53,30 +59,30 @@ router.post('/register', async (req, res) => {
     res.redirect('/coach/login')
   })
 })
-
+//renders login page
 router.get('/login', (req, res) => {
-  res.render('login', {
+  res.render('coach_login', {
     locals: { error: null }
   })
 })
-
+//allows someone to log in and creates session for them
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('login', {
+    res.render('coach_login', {
       locals: {
           error: 'Please submit all required field'
       }
   })
   return;
   }
-
+//checks to see if coach exists in db
   const coach = await db.Coach.findOne({
     where: {
       email: req.body.email
     }
   })
   if (!coach) {
-    return res.status(404).render('error', {
+    return res.status(404).render('coach_login', {
       locals: { error: 'could not find user with that email'}
     })
   }
@@ -88,25 +94,32 @@ router.post('/login', async (req, res) => {
   if (match) {
     req.session.coach = coach;
   } else {
-    // return res.status(401).render('error', {
-    //   locals: { error: 'incorrect password'}
-    // })
-    res.json({
-      error: 'nope'
+    return res.status(401).render('coach_login', {
+      locals: { error: 'incorrect password' }
     })
   }
   //set user data on session
   req.body.coach = coach;
 
-  res.json(coach);
-})
+  res.render("coach-hub", {
+    locals: {
+      error: null,
+      title: "Athletes List",
+    },
+    partials: {
+      head: "/partials/head"
+    }
+  });
+});
+
 //brings to page that has workouts for coach
 router.get('/workouts', checkAuth, async (req, res) => {
-  res.render('coach-workouts', {
-    locals: { error: null }
+  res.render('coach_workouts', {
+    locals: { error: 'there are no workouts available' }
   })
 })
 
+//deletes workout by workoutid
 router.delete('/deleteworkout/:id', (req, res) => {
   db.Workout.destroy({
     where: {
@@ -115,10 +128,28 @@ router.delete('/deleteworkout/:id', (req, res) => {
   })
 })
 
+//allows you to edit one workout 
+router.put('/editworkout/:id', (req, res) => {
+  db.Workout.findByPk(req.params.id)
+  .then((result) => {
+    result.exercise = req.body.exercise
+    result.sets = req.body.sets
+    result.reps = req.body.reps
+    result.weight = req.body.weight
+    return result.save()
+  })
+  .then((response) => {
+    res.json('working')
+  })
+})
+
+//allows coach to create workout and add it to db
 router.post('/addworkout', async (req, res) => {
   if (!req.body.exercise) {
-    return res.status(422).json({
-      error: 'please include all required fields'
+    return res.status(422).render('workout', {
+      locals: {
+        error: 'please include all required fields'
+      }
     })
   } else {
     const newWorkout = await db.Workout.create({
@@ -131,9 +162,32 @@ router.post('/addworkout', async (req, res) => {
   }
 })
 
+// router.get('/getathlete/', (req, res) => {
+//   res.render('athlete_profile', {
+//     locals: { title: "Athlete Home" },
+//     partials: {head: 'partials/head'}
+//   })
+// })
+
+router.get('/athletes/:client', async (req, res) => {
+  const client = await db.Client.findByPk(req.params.client, {
+    include: db.Workout
+  });
+  res.render('coach_athletes', {
+    locals: {
+      client,
+      title: 'Athletes'
+    },
+    partials: {
+      head: 'partials/head',
+    }
+  })
+})
+
+// allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/login');
+  res.redirect('/home');
 })
 
 // router.get('/workouts', checkAuth, (req, res) => {

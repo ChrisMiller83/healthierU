@@ -12,6 +12,8 @@ var athleteRouter = require('./routes/athlete');
 const coachRouter = require('./routes/coach');
 const getCoachesRouter = require('./routes/getCoaches');
 const getAthletesRouter = require('./routes/getAthletes');
+const getWorkoutsRouter = require('./routes/workouts');
+const apiRouter = require('./routes/api')
 
 var app = express();
 
@@ -47,5 +49,7 @@ app.use('/athlete', athleteRouter);
 app.use('/coach', coachRouter);
 app.use('/coaches_list', getCoachesRouter);
 app.use('/athletes_list', getAthletesRouter);
+app.use('/workouts', getWorkoutsRouter);
+app.use('/api', apiRouter)
 
 module.exports = app;

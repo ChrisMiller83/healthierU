@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  ${head_2}
+</head>
+<body>
+  ${workout.map(work => `
+    
+  <div class="card" style="width: 18rem;">
+    <img src="../Images/curling_weights.jpeg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Excercise:${work.exercise}</h5>
+      <p class="card-text">Sets:${work.sets},Reps:${work.reps}</p>
+      <a href="#" class="btn btn-primary">Weight:${work.weight}</a>
+    </div>
+  </div>
+  `)}
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -62,14 +62,14 @@ router.post('/register', async (req, res) => {
 })
 //renders login page
 router.get('/login', (req, res) => {
-  res.render('login', {
+  res.render('coach_login', {
     locals: { error: null }
   })
 })
 //allows someone to log in and creates session for them
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('login', {
+    res.render('coach_login', {
       locals: {
           error: 'Please submit all required field'
       }
@@ -83,7 +83,7 @@ router.post('/login', async (req, res) => {
     }
   })
   if (!coach) {
-    return res.status(404).render('login', {
+    return res.status(404).render('coach_login', {
       locals: { error: 'could not find user with that email'}
     })
   }
@@ -95,7 +95,7 @@ router.post('/login', async (req, res) => {
   if (match) {
     req.session.coach = coach;
   } else {
-    return res.status(401).render('login', {
+    return res.status(401).render('coach_login', {
       locals: { error: 'incorrect password' }
     })
   }
@@ -112,12 +112,14 @@ router.post('/login', async (req, res) => {
     }
   });
 });
+
 //brings to page that has workouts for coach
 router.get('/workouts', checkAuth, async (req, res) => {
-  res.render('coach-workouts', {
+  res.render('coach_workouts', {
     locals: { error: 'there are no workouts available' }
   })
 })
+
 //deletes workout by workoutid
 router.delete('/deleteworkout/:id', (req, res) => {
   db.Workout.destroy({
@@ -160,6 +162,14 @@ router.post('/addworkout', async (req, res) => {
     res.json(newWorkout)
   }
 })
+
+router.get('/getathlete/', (req, res) => {
+  res.render('athlete_profile', {
+    locals: { title: "Athlete Home" },
+    partials: {head: 'partials/head'}
+  })
+})
+
 // allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;

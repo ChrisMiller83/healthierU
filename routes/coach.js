@@ -173,7 +173,7 @@ router.get('/getathlete/', (req, res) => {
 // allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/login');
+  res.redirect('/home');
 })
 
 // router.get('/workouts', checkAuth, (req, res) => {

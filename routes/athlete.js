@@ -166,7 +166,7 @@ router.get('/setcoach/:id', checkAuth, (req, res) => {
 // logout function
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/login');
+  res.redirect('/home');
 })
 
 module.exports = router;

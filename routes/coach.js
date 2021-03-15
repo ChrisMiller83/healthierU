@@ -6,7 +6,7 @@ const checkAuth = require('../checkAuthCoach');
 
 //redners coach home page on log in
 router.get('/home', (req, res) => {
-  res.render('coach_home', {
+  res.render('coach-hub', {
     locals: { title: "Coaches Home" },
     partials: { head: '/partials/head' }
   })
@@ -102,7 +102,7 @@ router.post('/login', async (req, res) => {
   // req.body.coach = coach;
   console.log(coach)
 
-  res.render("coach_home", {
+  res.render("coach-hub", {
     locals: {
       error: null,
       title: "Athletes List",
@@ -163,17 +163,32 @@ router.post('/addworkout', async (req, res) => {
   }
 })
 
-router.get('/getathlete/', (req, res) => {
-  res.render('athlete_profile', {
-    locals: { title: "Athlete Home" },
-    partials: {head: 'partials/head'}
+// router.get('/getathlete/', (req, res) => {
+//   res.render('athlete_profile', {
+//     locals: { title: "Athlete Home" },
+//     partials: {head: 'partials/head'}
+//   })
+// })
+
+router.get('/athletes/:client', async (req, res) => {
+  const client = await db.Client.findByPk(req.params.client, {
+    include: db.Workout
+  });
+  res.render('coach_athletes', {
+    locals: {
+      client,
+      title: 'Athletes'
+    },
+    partials: {
+      head: 'partials/head',
+    }
   })
 })
 
 // allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/login');
+  res.redirect('/home');
 })
 
 // router.get('/workouts', checkAuth, (req, res) => {

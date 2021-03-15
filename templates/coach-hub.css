@@ -1,3 +1,119 @@
-.nav {
+nav {
+  display: flex;
+  flex-direction: row;  
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color:#000000;
+  font-family: 'Mada', sans-serif;
+}
+
+body {
+  background-color: silver
+}
+
+.nav-links li{
+  list-style: none;
+
+}
+
+.nav-links a{
+  color: #015dce;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 14px;
   
+}
+
+.logo{
+  color: #015dce;
+  letter-spacing: 3.5px;
+  font-size: 20px;
+  margin: 0;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #015dce;
+}
+
+h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+.sidebar-left {
+  background-color: #015dce;
+  padding: 20px;
+  width: 13%;
+  margin-left: 20px;
+  height: 500px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.sidebar-right {
+  padding: 20px;
+  background-color: #015dce;
+  order: 3;
+  width: 13%;
+  height: 500px;
+}
+
+.pic {
+  max-width:100%;
+  max-height:100%;
+}
+
+
+
+.main {
+  padding: 20px;
+  background-color: whitesmoke;
+  max-width: 50%;
+}
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  justify-content: space-around;
+  
+  
+}
+
+.likebtn {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.post {
+  background-color: silver;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.friends {
+  background-color: white;
+  padding: 10px;
+  height: 90%;
+}
+
+.user {
+  background-color: white;
+  padding: 10px;
+  height: 90%;
 }

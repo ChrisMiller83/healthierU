@@ -61,7 +61,7 @@ router.get('/home', checkAuth, (req, res) => {
 
 // renders login page
 router.get('/login', (req, res) => {
-  res.render('login', {
+  res.render('athlete_login', {
     locals: { error: null }
   })
 })
@@ -69,7 +69,7 @@ router.get('/login', (req, res) => {
 // lets athlete user login and creates session
 router.post('/login', async (req, res) => {
   if (!req.body.email || !req.body.password) {
-    res.render('login', {
+    res.render('athlete_login', {
       locals: {
           error: 'Please submit all required field'
       }
@@ -83,7 +83,7 @@ router.post('/login', async (req, res) => {
     }
   })
   if (!client) {
-    return res.status(404).render('login', {
+    return res.status(404).render('athlete_login', {
       locals: { error: 'could not find user with that email'}
     })
   }
@@ -94,7 +94,7 @@ router.post('/login', async (req, res) => {
   if (match) {
     req.session.client = client;
   } else {
-    return res.status(401).render('login', {
+    return res.status(401).render('athlete_login', {
       locals: { error: 'incorrect password' }
     })
   }
@@ -116,7 +116,7 @@ router.get('/allworkouts', checkAuth, (req, res) => {
     res.json(workout)
   })
 })
-// displays workot based on workout id
+// displays workout based on workout id
 router.get('/:id', (req, res) => {
   const {id} = req.session.client;
   db.Workout.findOne({

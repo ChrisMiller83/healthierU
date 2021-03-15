@@ -8,6 +8,7 @@ module.exports = {
       sets: 5,
       reps: 10,
       weight: 100,
+      ClientId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -17,6 +18,33 @@ module.exports = {
       reps: 5,
       weight: 90,
       ClientId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      exercise: 'pull-ups',
+      sets: 3,
+      reps: 5,
+      weight: 100,
+      ClientId: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      exercise: 'push-ups',
+      sets: 3,
+      reps: 10,
+      weight: 100,
+      ClientId: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      exercise: 'run',
+      sets: 3,
+      reps: 10,
+      weight: 100,
+      ClientId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     }

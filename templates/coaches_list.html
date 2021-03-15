@@ -29,10 +29,9 @@
 </head>
 
 <body>
-  
-  <h3 style="background-color:gold; font-family: fantasy; font-style: italic, strong; text-align: center;">Coaches List</h3>
+  <h2 style="background-color:gold; font-family: fantasy; font-style: italic, strong; text-align: center;">Coaches List</h2>
+  <table style="width:100%; border: 1px solid black; justify-content: space-evenly;">
 
-  <table>
     <tr>
       <th>Select Coach</th>
       <th>First Name</th>
@@ -49,9 +48,7 @@
       <td>${coach.email}</td>
       <td>${coach.specialty}</td>
     </tr>
-    `
-  ).join('')}
-
+    `).join('')}
 
   </table>
   <button type="submit" style="background-color:gold; font-family: fantasy; font-style: italic, strong; justify-content: center;">Submit</button>

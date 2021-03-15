@@ -103,10 +103,8 @@ router.post('/login', async (req, res) => {
     locals: {
       error: null,
       title: "Athlete Profile",
-    },
-    partials: {
-      head: "/partials/head"
     }
+    
   });
 })
 // renders all workouts - might not need this in athlete page

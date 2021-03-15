@@ -8,6 +8,7 @@
   ${head}
 </head>
 <body>
+<<<<<<< HEAD
 <<<<<<< HEAD:templates/coach_home.html
 
  
@@ -15,6 +16,27 @@
 =======
   ${JSON.stringify(client)}
 >>>>>>> main:templates/coach_athletes.html
+=======
+  <div class="container">
+    ${athletes.map(athlete => `
+      <h1>${athlete.firstName} ${athlete.lastName}</h1>
+      ${athlete.Workouts.map(workout => `
+        <div class="card col-4" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">${workout.exercise}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Sets: ${workout.sets} Reps: ${workout.reps}</h6>
+            <p class="card-text">Weight: ${workout.weight}</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        `)}
+    `).join('')}
+  </div>
+  
+  
+  
+>>>>>>> main
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

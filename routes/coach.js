@@ -99,7 +99,8 @@ router.post('/login', async (req, res) => {
     })
   }
   //set user data on session
-  req.body.coach = coach;
+  // req.body.coach = coach;
+  console.log(coach)
 
   res.render("coach_home", {
     locals: {

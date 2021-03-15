@@ -3,18 +3,26 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require('bcrypt');
 
-//
-router.get('/athletes', (req, res) => {
+
+router.get('/athletes', async (req, res) => {
   console.log(req.session.coach)
   console.log(req.session.client)
-  db.Client.findAll({
+  const data = await db.Client.findAll({
     where: {
       CoachId: req.session.coach.id
     }
   })
-  .then((result) => {
-    res.json(result)
-  })
+    res.render("coach_home", {
+      locals: { 
+        error: null,
+        title: "Coach Home",
+        athletes: data
+      },
+      partials: {
+        head: 'partials/head'
+      }
+    })
 })
 
-module.exports = router;
+
+module.exports = router

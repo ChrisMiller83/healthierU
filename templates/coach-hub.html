@@ -127,13 +127,14 @@
 
         <aside class="sidebar-right">
           <div class="friends">
-            <h3>Online</h3>
-              <ol>
-                <p>Ashley Adams</p>
-                <p>Joe Stephens</p>
-                <p>Amy James</p>
-                <p>Andrew Michaels</p>
-              </ol>
+            <h3>Clients</h3>
+            <h3>Athletes</h3>
+
+            ${athletes.map(athlete => 
+              `
+              <a href="/coach/athletes/${athlete.id}"><h3>${athlete.firstName} ${athlete.lastName}</h3></a>
+              `
+            ).join('')}
           </div>
         </aside>
       

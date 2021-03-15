@@ -103,10 +103,8 @@ router.post('/login', async (req, res) => {
     locals: {
       error: null,
       title: "Athlete Profile",
-    },
-    partials: {
-      head: "/partials/head"
     }
+    
   });
 })
 // renders all workouts - might not need this in athlete page
@@ -166,7 +164,7 @@ router.get('/setcoach/:id', checkAuth, (req, res) => {
 // logout function
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/login');
+  res.redirect('/home');
 })
 
 module.exports = router;

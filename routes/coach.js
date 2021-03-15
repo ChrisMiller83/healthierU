@@ -4,11 +4,11 @@ const db = require("../models");
 const bcrypt = require('bcrypt');
 const checkAuth = require('../checkAuthCoach');
 
-//renders coach home page on log in
-router.get('/home', checkAuth, (req, res) => {
+//redners coach home page on log in
+router.get('/home', (req, res) => {
   res.render('coach_home', {
     locals: { title: "Coaches Home" },
-    partials: { head: 'partials/head_2' }
+    partials: { head: '/partials/head' }
   })
 })
 
@@ -46,13 +46,12 @@ router.post('/register', async (req, res) => {
   } 
 // hashes passwords
   const hash = await bcrypt.hash(req.body.password, 10);
-//creates new coach and assigns it to variable
+//creates new coach and assigs it to variable
   const newCoach = await db.Coach.create({
     email: req.body.email,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    password: hash,
-    specialty: req.body.specialty
+    password: hash
   })
 
   // res.json(newCoach);
@@ -108,7 +107,7 @@ router.post('/login', async (req, res) => {
       title: "Athletes List",
     },
     partials: {
-      head: "/partials/head_2"
+      head: "/partials/head"
     }
   });
 });

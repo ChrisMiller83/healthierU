@@ -4,8 +4,14 @@ const db = require("../models");
 const bcrypt = require('bcrypt');
 
 //
-router.get('/athlete/:id', (req, res) => {
-  db.Client.findByPk(req.params.id)
+router.get('/athletes', (req, res) => {
+  console.log(req.session.coach)
+  console.log(req.session.client)
+  db.Client.findAll({
+    where: {
+      CoachId: req.session.coach.id
+    }
+  })
   .then((result) => {
     res.json(result)
   })

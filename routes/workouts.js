@@ -8,7 +8,6 @@ const bcrypt = require('bcrypt');
 router.get('/allworkouts', async (req, res) => {
   const data = await db.Workout.findAll()
 
-  console.log(data)
   res.render('coach_workouts', {
     locals: {
       workout: data,

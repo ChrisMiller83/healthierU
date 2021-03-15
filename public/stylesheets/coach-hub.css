@@ -1,4 +1,4 @@
-nav {
+/* nav {
   display: flex;
   flex-direction: row;  
   justify-content: space-around;
@@ -6,7 +6,7 @@ nav {
   min-height: 8vh;
   background-color:#000000;
   font-family: 'Mada', sans-serif;
-}
+} */
 
 body {
   background-color: silver

@@ -15,7 +15,7 @@ function getCoach(coach) {
 
 axios.get("/athlete_list")
   .then((response) => {
-    const htmlArray = response.data.map((aathleteName) => {
+    const htmlArray = response.data.map((athleteName) => {
       return getName(athleteName)
     })
   })

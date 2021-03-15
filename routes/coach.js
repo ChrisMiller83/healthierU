@@ -4,8 +4,8 @@ const db = require("../models");
 const bcrypt = require('bcrypt');
 const checkAuth = require('../checkAuthCoach');
 
-//redners coach home page on log in
-router.get('/home', (req, res) => {
+//renders coach home page on log in
+router.get('/home', checkAuth, (req, res) => {
   res.render('coach_home', {
     locals: { title: "Coaches Home" },
     partials: { head: 'partials/head_2' }
@@ -46,12 +46,13 @@ router.post('/register', async (req, res) => {
   } 
 // hashes passwords
   const hash = await bcrypt.hash(req.body.password, 10);
-//creates new coach and assigs it to variable
+//creates new coach and assigns it to variable
   const newCoach = await db.Coach.create({
     email: req.body.email,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    password: hash
+    password: hash,
+    specialty: req.body.specialty
   })
 
   // res.json(newCoach);

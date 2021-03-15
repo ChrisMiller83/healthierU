@@ -99,7 +99,7 @@ router.post('/login', async (req, res) => {
     })
   }
   // renders athlete based on their id and renders their page
-  res.render("coach_home", {
+  res.render("athlete_home", {
     locals: {
       error: null,
       title: "Athlete Profile",

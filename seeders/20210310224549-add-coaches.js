@@ -1,5 +1,7 @@
 'use strict';
 
+const coach = require("../models/coach");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Coaches', [{
@@ -19,7 +21,8 @@ module.exports = {
       password: '$2b$10$/8DySr9wBlA/.pg8Y4LsmOyNd2GMe4.zjjsDmMG.fBsmCIoWu6EOK', //password
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    },
+    ...coaches
   ])
   },
 

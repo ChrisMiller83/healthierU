@@ -13,7 +13,8 @@ const coachRouter = require('./routes/coach');
 const getCoachesRouter = require('./routes/getCoaches');
 const getAthletesRouter = require('./routes/getAthletes');
 const getWorkoutsRouter = require('./routes/workouts');
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api');
+
 
 var app = express();
 

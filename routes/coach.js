@@ -8,7 +8,7 @@ const checkAuth = require('../checkAuthCoach');
 router.get('/home', (req, res) => {
   res.render('coach-hub', {
     locals: { title: "Coaches Home" },
-    partials: { head: '/partials/head' }
+    partials: { head: '/partials/head_2' }
   })
 })
 

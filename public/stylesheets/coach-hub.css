@@ -1,12 +1,4 @@
-nav {
-  display: flex;
-  flex-direction: row;  
-  justify-content: space-around;
-  align-items: center;
-  min-height: 8vh;
-  background-color:#000000;
-  font-family: 'Mada', sans-serif;
-}
+
 
 body {
   background-color: silver

@@ -153,7 +153,7 @@ router.post('/addworkout', async (req, res) => {
     res.json(newWorkout)
   }
 })
-
+// creates workout for client
 router.post('/athletes/:client', async (req, res) => {
 
   db.Workout.create({
@@ -167,7 +167,7 @@ router.post('/athletes/:client', async (req, res) => {
     res.redirect(`/coach/athletes/${req.params.client}`)
   })
 })
-
+// gets athletes that are assigned to coach by id
 router.get('/athletes', async (req, res) => {
   const data = await db.Client.findAll({
     where: {
@@ -199,7 +199,6 @@ router.get('/athletes/:client', async (req, res) => {
       model: db.Workout
     }
   })
-  console.log(data)
     res.render("coach_athletes", {
       locals: { 
         error: null,

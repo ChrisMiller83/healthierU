@@ -111,13 +111,23 @@ router.post('/login', async (req, res) => {
   });
 })
 // renders all workouts - might not need this in athlete page
-router.get('/allworkouts', checkAuth, (req, res) => {
-  db.Workout.findAll()
-  .then((workout) => {
-    res.json(workout)
+router.get('/allworkouts', checkAuth, async (req, res) => {
+  const data = await db.Workout.findAll({
+    where: {
+      ClientId: req.session.client.id
+    }
+  })
+    res.render("athlete_home", {
+      locals: {
+        error: null,
+        title: "Athlete Profile",
+        workouts: data
+      },
+      partials: {
+        head: '/partials/head'
+      }
   })
 })
-
 
 // displays workout based on client to workout id
 router.get('/:id', async (req, res) => {
@@ -179,5 +189,3 @@ module.exports = router;
 //     }
 //   })
 // })
-
-// assigns coach to athlete based on coach id

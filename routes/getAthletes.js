@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
       athletes: data
     },
     partials: {
-      head: "/partials/head_2"
+      head: "/partials/head"
     }
   })
 })

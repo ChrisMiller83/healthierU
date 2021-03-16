@@ -82,8 +82,9 @@
           </div>
         </aside>
         
+        <div class="container">
         <main class="main">
-          <h2>Actvity</h2>
+          <h2>Activity</h2>
           <div class="feed">
             <p>
               <div class="post">
@@ -93,7 +94,10 @@
 
                 Your athlete Joe Stephens Just hit a new PR!
                 <br>
-                <textarea class="cmmt" name="comment" form="usrform">Enter text here...</textarea>
+                
+                <div class="cmmt">
+                  <textarea  name="comment" form="usrform">Comment...</textarea>
+                </div>
                 <div class="likebtn">
                 <button> Like</button>
                 <br>
@@ -106,7 +110,9 @@
               <div class="post">
                 Your athlete Amy James reached her macronutrients for the day!
                 
-                <textarea class="cmmt" name="comment" form="usrform">Enter text here...</textarea>
+                <div class="cmmt">
+                  <textarea  name="comment" form="usrform">Comment...</textarea>
+                </div>
                 <div class="likebtn">
                   <button> Like</button>
                   <br>
@@ -119,8 +125,10 @@
               <img src="https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/article/do-you-need-to-squat-wide.jpg" class="pic">
               Your friend Andrew Michael's Beat your squat PR for reps!
               <br>
-              <textarea class="cmmt" name="comment" form="usrform">Enter text here...</textarea>
-                <div class="likebtn">
+              <div class="cmmt">
+              <textarea  name="comment" form="usrform">Comment...</textarea>
+              </div>  
+              <div class="likebtn">
                   <button> Like</button>
                   <br>
                   <button>Comment</button>
@@ -128,13 +136,13 @@
             </div>
           </div>
           </p>
-        
         </main>
+      </div>
 
         <aside class="sidebar-right">
           <div class="friends">
 
-            <h3>Clients</h3>
+            
             <h3>Athletes</h3>
 
             ${athletes.map(athlete => 

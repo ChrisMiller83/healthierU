@@ -14,6 +14,10 @@ const getCoachesRouter = require('./routes/getCoaches');
 const getAthletesRouter = require('./routes/getAthletes');
 const getWorkoutsRouter = require('./routes/workouts');
 
+
+const meal_plansRouter = require('./routes/meal_plans')
+
+
 var app = express();
 
 app.use(logger('dev'));
@@ -49,5 +53,9 @@ app.use('/coach', coachRouter);
 app.use('/coaches_list', getCoachesRouter);
 app.use('/athletes_list', getAthletesRouter);
 app.use('/workouts', getWorkoutsRouter);
+
+
+app.use('/meal_plans', meal_plansRouter);
+
 
 module.exports = app;

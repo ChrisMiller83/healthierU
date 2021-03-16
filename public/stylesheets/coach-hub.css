@@ -1,12 +1,4 @@
-nav {
-  display: flex;
-  flex-direction: row;  
-  justify-content: space-around;
-  align-items: center;
-  min-height: 8vh;
-  background-color:#000000;
-  font-family: 'Mada', sans-serif;
-}
+
 
 body {
   background-color: silver
@@ -46,7 +38,9 @@ h4 {
 }
 
 .sidebar-left {
-  background-color: #015dce;
+
+  background-color: black;
+
   padding: 20px;
   width: 13%;
   margin-left: 20px;
@@ -61,7 +55,9 @@ h4 {
 
 .sidebar-right {
   padding: 20px;
-  background-color: #015dce;
+
+  background-color: black;
+
   order: 3;
   width: 13%;
   height: 500px;
@@ -76,7 +72,9 @@ h4 {
 
 .main {
   padding: 20px;
-  background-color: whitesmoke;
+
+  background-color:gold;
+
   max-width: 50%;
 }
 

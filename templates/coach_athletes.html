@@ -18,7 +18,6 @@
 >>>>>>> main:templates/coach_athletes.html
 =======
   <div class="container">
-    ${athletes.map(athlete => `
       <h1>${athlete.firstName} ${athlete.lastName}</h1>
       ${athlete.Workouts.map(workout => `
         <div class="card col-4" style="width: 18rem;">
@@ -26,13 +25,29 @@
             <h5 class="card-title">${workout.exercise}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Sets: ${workout.sets} Reps: ${workout.reps}</h6>
             <p class="card-text">Weight: ${workout.weight}</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <a href="/coach/deleteworkout/${workout.id}" class="card-link">Delete Workout</a>
+            <a href="#" class="card-link">Edit Workout</a>
           </div>
         </div>
-        `)}
-    `).join('')}
+        `).join('')}
   </div>
+
+  <form>
+    <h1>Edit Workout</h1>
+    <fieldset>
+      <label for="exercise">Exercise Name</label>
+      <input type="text" id="exercise" name="exercise">
+
+      <label for="sets">Sets</label>
+      <input type="text" id="sets" name="sets">
+
+      <label for="reps">Reps</label>
+      <input type="text" id="reps" name="reps">
+
+      <label for="weight">Weight</label>
+      <input type="text" id="weight" name="weight">
+    </fieldset>
+  </form>
   
   
   

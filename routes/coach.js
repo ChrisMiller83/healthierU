@@ -118,7 +118,6 @@ router.delete('/deleteworkout/:id', (req, res) => {
       id: req.params.id
     }
   })
-  res.redirect('/coach/athletes')
 })
 
 //allows you to edit one workout 
@@ -130,9 +129,6 @@ router.put('/editworkout/:id', (req, res) => {
     result.reps = req.body.reps
     result.weight = req.body.weight
     return result.save()
-  })
-  .then((response) => {
-    res.json('working')
   })
 })
 
@@ -149,9 +145,9 @@ router.post('/addworkout', async (req, res) => {
       exercise: req.body.exercise,
       sets: req.body.sets,
       reps: req.body.reps,
-      weight: req.body.weight
+      weight: req.body.weight,
+      ClientId: req.body.athleteId
     })
-    res.json(newWorkout)
   }
 })
 // creates workout for client

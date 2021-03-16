@@ -17,7 +17,9 @@ const getLogoutRouter = require('./routes/logout');
 const methodOverride = require('method-override');
 
 
-const meal_plansRouter = require('./routes/meal_plans')
+const meal_plansRouter = require('./routes/meal_plans');
+const athlete_meal_plansRouter = require('./routes/athlete_meal_plans');
+
 
 
 var app = express();
@@ -58,6 +60,8 @@ app.use('/workouts', getWorkoutsRouter);
 app.use('/logout', getLogoutRouter);
 
 app.use('/meal_plans', meal_plansRouter);
+app.use('/athlete_meal_plans', athlete_meal_plansRouter);
+
 
 
 module.exports = app;

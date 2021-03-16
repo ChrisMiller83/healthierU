@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <link rel="stylesheet" href="/stylesheets/coach-hub.css">
   <link rel="stylesheet" href="/stylesheets/coach_athletes.css">
 
@@ -16,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/coach/home"
+            <a class="nav-link active" aria-current="page" href="/coach/athletes"
               style="color:gold; font-family: fantasy; font-style: italic;">Home</a>
           </li>
           <li class="nav-item">
@@ -29,17 +30,13 @@
               Plans
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: rgb(43, 41, 41);">
-              <li><a class="dropdown-item" href="#"
+              <li><a class="dropdown-item" href="/coach/athletes"
                   style="color:gold; font-family: fantasy; font-style: italic;">Workout
                   Plans</a></li>
               <li><a class="dropdown-item" href="/meal_plans" style="color:gold; font-family: fantasy; font-style: italic;">Meal
                   Plans</a>
               </li>
-              <!-- <li>
-                      <hr class="dropdown-divider">
-                    </li> -->
-            <li><a class="dropdown-item" href="#"
-                style="color:gold; font-family: fantasy; font-style: italic;">Goals</a></li>
+              
           </ul>
         </li>
       </ul>
@@ -51,8 +48,12 @@
     </div>
   </div>
 </nav> 
+
 </head>
 <body>
+
+
+ 
   <div class="container">
       <h1>${athlete.firstName} ${athlete.lastName}</h1>
       ${athlete.Workouts.map(workout => `
@@ -105,6 +106,7 @@
         <label for="weight">Weight</label>
         <input type="text" id="weight" name="weight">
 
+
         <input id="athleteId" name="athleteId" type="hidden" value="${athlete.id}">
   
         <button class="addSubmit" type="submit">Submit</button>
@@ -114,6 +116,7 @@
   
   
   <script src="/coach.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>

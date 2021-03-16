@@ -6,9 +6,8 @@ const checkAuth = require('../checkAuthCoach');
 
 //redners coach home page on log in
 router.get('/home', (req, res) => {
-  res.render('coach-hub', {
-    locals: { title: "Coaches Home" },
-    partials: { head: '/partials/head_2' }
+  res.redirect('/coach/athletes', {
+    locals: { title: "Coaches Home" }
   })
 })
 
@@ -214,7 +213,7 @@ router.get('/athletes/:client', async (req, res) => {
 // allows user to logout
 router.get('/logout', (req, res) => {
   req.session.user = null;
-  res.redirect('/home');
+  res.redirect('/coach/login');
 })
 
 // router.get('/workouts', checkAuth, (req, res) => {

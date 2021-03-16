@@ -60,7 +60,7 @@
             <h5 class="card-title">${workout.exercise}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Sets: ${workout.sets} Reps: ${workout.reps}</h6>
             <p class="card-text">Weight: ${workout.weight}</p>
-            <a href="/coach/deleteworkout/${workout.id}" class="card-link">Delete Workout</a>
+            <form class='card-link' METHOD='POST' action='/coach/deleteworkout/${workout.id}?_method=DELETE'><button name="_method" value="DELETE" type='submit'>Delete</button></form>
             <a href="#" class="card-link">Edit Workout</a>
           </div>
         </div>

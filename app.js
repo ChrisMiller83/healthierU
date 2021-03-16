@@ -14,6 +14,7 @@ const getCoachesRouter = require('./routes/getCoaches');
 const getAthletesRouter = require('./routes/getAthletes');
 const getWorkoutsRouter = require('./routes/workouts');
 const getLogoutRouter = require('./routes/logout');
+const methodOverride = require('method-override');
 
 
 const meal_plansRouter = require('./routes/meal_plans')
@@ -47,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine("html", es6Renderer);
 app.set("views", "templates");
 app.set("view engine", "html");
-
+app.use(methodOverride('_method'));
 app.use('/', indexRouter);
 app.use('/athlete', athleteRouter);
 app.use('/coach', coachRouter);

@@ -34,14 +34,18 @@ module.exports = {
         references: {
           model: 'Coaches',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       ClientId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Clients',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       }
     });
   },

@@ -5,10 +5,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coaches Home</title>
+
 </head>
   <link rel="stylesheet" href="/stylesheets/coach-hub.css">
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+  
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -129,13 +133,16 @@
 
         <aside class="sidebar-right">
           <div class="friends">
+
+            <h3>Clients</h3>
             <h3>Athletes</h3>
-              <ol>
-                <p>Ashley Adams</p>
-                <p>Joe Stephens</p>
-                <p>Amy James</p>
-                <p>Andrew Michaels</p>
-              </ol>
+
+            ${athletes.map(athlete => 
+              `
+              <a href="/coach/athletes/${athlete.id}"><h3>${athlete.firstName} ${athlete.lastName}</h3></a>
+              `
+            ).join('')}
+
           </div>
         </aside>
       

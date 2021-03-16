@@ -103,6 +103,9 @@ router.post('/login', async (req, res) => {
     locals: {
       error: null,
       title: "Athlete Profile",
+    },
+    partials: {
+      head: '/partials/head'
     }
     
   });
@@ -114,16 +117,53 @@ router.get('/allworkouts', checkAuth, (req, res) => {
     res.json(workout)
   })
 })
-// displays workout based on workout id
-router.get('/:id', (req, res) => {
-  const {id} = req.session.client;
-  db.Workout.findOne({
-    where: {id}
-  })
-  .then((workout) => {
-    res.json(workout)
+
+
+// displays workout based on client to workout id
+router.get('/:id', async (req, res) => {
+  // const {id} = req.session.client;
+  const data = await db.Workout.findAll({
+    where: {
+      ClientId: req.session.client.id     //{id}
+  }
+})
+    res.render('athlete_workout_plan', {
+      locals: {
+        error: null,
+        title: 'Athlete Workouts',
+        workouts: data
+      },
+      partials: {
+        head: '/partials/head'
+      }
+    })
+})
+
+router.get('/setcoach/:id', checkAuth, (req, res) => {
+  db.Coach.findByPk(req.params.id)
+  .then((coach) => {
+    if (!coach) {
+      res.status(404).json({
+        error: 'could not find a coach with that id'
+      })
+    } else {
+      db.Client.findByPk(req.session.client.id)
+      .then((client) => {
+        client.setCoach(coach)
+        res.render('athlete-hub')
+      })
+    }
   })
 })
+
+// logout function
+router.get('/logout', (req, res) => {
+  req.session.user = null;
+  res.redirect('/home');
+})
+
+module.exports = router;
+
 
 //set workouts
 // router.get('/workouts/:id', checkAuth, (req, res) => {
@@ -144,29 +184,3 @@ router.get('/:id', (req, res) => {
 // })
 
 // assigns coach to athlete based on coach id
-router.get('/setcoach/:id', checkAuth, (req, res) => {
-  db.Coach.findByPk(req.params.id)
-  .then((coach) => {
-    if (!coach) {
-      res.status(404).json({
-        error: 'could not find a coach with that id'
-      })
-    } else {
-      db.Client.findByPk(req.session.client.id)
-      .then((client) => {
-        client.setCoach(coach)
-        res.redirect()
-      })
-    }
-  })
-})
-
-// logout function
-router.get('/logout', (req, res) => {
-  req.session.user = null;
-  res.redirect('/home');
-})
-
-module.exports = router;
-
-

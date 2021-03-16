@@ -101,15 +101,7 @@ router.post('/login', async (req, res) => {
   //set user data on session
   req.body.coach = coach;
 
-  res.render("coach-hub", {
-    locals: {
-      error: null,
-      title: "Athletes List",
-    },
-    partials: {
-      head: "/partials/head"
-    }
-  });
+  res.redirect("/coach/athletes");
 });
 
 //brings to page that has workouts for coach
@@ -161,26 +153,61 @@ router.post('/addworkout', async (req, res) => {
     res.json(newWorkout)
   }
 })
+// creates workout for client
+router.post('/athletes/:client', async (req, res) => {
 
-// router.get('/getathlete/', (req, res) => {
-//   res.render('athlete_profile', {
-//     locals: { title: "Athlete Home" },
-//     partials: {head: 'partials/head'}
-//   })
-// })
+  db.Workout.create({
+    exercise: req.body.exercise,
+    sets: req.body.sets,
+    reps: req.body.reps,
+    weight: req.body.weight,
+    ClientId: req.params.client
+  })
+  .then((result) => {
+    res.redirect(`/coach/athletes/${req.params.client}`)
+  })
+})
+// gets athletes that are assigned to coach by id
+router.get('/athletes', async (req, res) => {
+  const data = await db.Client.findAll({
+    where: {
+      CoachId: req.session.coach.id
+    },
+    include: {
+      model: db.Workout
+    }
+  })
+    res.render("coach-hub", {
+      locals: { 
+        error: null,
+        title: "Coach Home",
+        athletes: data
+      },
+      partials: {
+        head: 'partials/head'
+      }
+  })
+})
 
 router.get('/athletes/:client', async (req, res) => {
-  const client = await db.Client.findByPk(req.params.client, {
-    include: db.Workout
-  });
-  res.render('coach_athletes', {
-    locals: {
-      client,
-      title: 'Athletes'
+  const data = await db.Client.findOne({
+    where: {
+      CoachId: req.session.coach.id,
+      id: req.params.client
     },
-    partials: {
-      head: 'partials/head',
+    include: {
+      model: db.Workout
     }
+  })
+    res.render("coach_athletes", {
+      locals: { 
+        error: null,
+        title: "Coach Home",
+        athlete: data
+      },
+      partials: {
+        head: 'partials/head'
+      }
   })
 })
 

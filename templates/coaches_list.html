@@ -43,7 +43,7 @@
     ${coaches.map(coach =>
     `
     <tr>
-      <td><input type="radio" id="select_coach" name="select_coach"></td>
+      <td><a href="/athlete/setcoach/${coach.id}">Select</a></td>
       <td>${coach.firstName}</td>
       <td>${coach.lastName}</td>
       <td>${coach.email}</td>

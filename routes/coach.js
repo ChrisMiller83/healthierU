@@ -118,6 +118,7 @@ router.delete('/deleteworkout/:id', (req, res) => {
       id: req.params.id
     }
   })
+  res.redirect('/coach/athletes')
 })
 
 //allows you to edit one workout 

@@ -20,6 +20,7 @@ const methodOverride = require('method-override');
 const meal_plansRouter = require('./routes/meal_plans')
 
 
+
 var app = express();
 
 app.use(logger('dev'));
@@ -58,6 +59,7 @@ app.use('/workouts', getWorkoutsRouter);
 app.use('/logout', getLogoutRouter);
 
 app.use('/meal_plans', meal_plansRouter);
+
 
 
 module.exports = app;
